@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -23,14 +23,11 @@ public class Produto  implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-
+	
 	private String nome;
-
 	private Double preco;
 
-	
-
-	@JsonIgnore
+	@JsonBackReference
 	@ManyToMany
 	@JoinTable(name = "PRODUTO_CATEGORIA",
 		joinColumns = @JoinColumn(name = "produto_id"),
@@ -38,11 +35,8 @@ public class Produto  implements Serializable {
 	)
 	private List<Categoria> categorias = new ArrayList<>();
 
+	public Produto() {}
 	
-
-
-
-
 	public Produto(Integer id, String nome, Double preco) {
 		super();
 		this.id = id;
@@ -50,19 +44,13 @@ public class Produto  implements Serializable {
 		this.preco = preco;
 	}
 
-
-
 	public Integer getId() {
 		return id;
 	}
 
-
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-
 
 	public String getNome() {
 		return nome;
@@ -76,19 +64,13 @@ public class Produto  implements Serializable {
 		return preco;
 	}
 
-
-
 	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
 
-
-
 	public List<Categoria> getCategorias() {
 		return categorias;
 	}
-
-
 
 	public void setCategorias(List<Categoria> categorias) {
 		this.categorias = categorias;
@@ -101,8 +83,6 @@ public class Produto  implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
