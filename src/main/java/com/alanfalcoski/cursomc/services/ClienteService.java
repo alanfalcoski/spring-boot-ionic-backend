@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alanfalcoski.cursomc.domain.Cidade;
 import com.alanfalcoski.cursomc.domain.Cliente;
@@ -16,7 +17,6 @@ import com.alanfalcoski.cursomc.domain.Endereco;
 import com.alanfalcoski.cursomc.domain.enums.TipoCliente;
 import com.alanfalcoski.cursomc.dto.ClienteDTO;
 import com.alanfalcoski.cursomc.dto.ClienteNewDTO;
-import com.alanfalcoski.cursomc.repositories.CidadeRepository;
 import com.alanfalcoski.cursomc.repositories.ClienteRepository;
 import com.alanfalcoski.cursomc.repositories.EnderecoRepository;
 import com.alanfalcoski.cursomc.services.exceptions.DataIntegrityException;
@@ -44,6 +44,7 @@ public class ClienteService {
 		return repo.save(newObj);
 	}
 	
+	@Transactional
 	public Cliente insert(Cliente obj) {
 		obj.setId(null);		
 		obj = repo.save(obj);
