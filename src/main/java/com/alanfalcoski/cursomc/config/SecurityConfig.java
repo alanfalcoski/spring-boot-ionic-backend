@@ -30,7 +30,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	private static final String[] PUBLIC_MATCHERS_GET = {			
 			"/produtos/**",
-			"/categorias/**"
+			"/categorias/**",
+			"/clientes/**"
 	};
 	
 	/* Todas as URLS's do vetor PUBLIC_MATCHERS serão permitidas, outras requisições serão autenticadas */
