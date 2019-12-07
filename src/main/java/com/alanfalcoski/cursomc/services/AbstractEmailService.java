@@ -9,7 +9,7 @@ import com.alanfalcoski.cursomc.domain.Pedido;
 
 public abstract class AbstractEmailService implements EmailService{
 
-	@Value("${default.sender}")
+	@Value("${remetente.padrao}")
 	private String sender;
 	
 	@Override
