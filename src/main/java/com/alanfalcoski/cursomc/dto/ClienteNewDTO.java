@@ -14,16 +14,16 @@ public class ClienteNewDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@NotEmpty(message="Preenchimento obrigatório")
-	@Length(min=5, max=120, message="O tamanho deve ser entre 5 e 80 caracteres")
+	@Length(min=5, max=120, message="O tamanho deve ser entre 5 e 120 caracteres")
 	private String nome;
-	
+
 	@NotEmpty(message="Preenchimento obrigatório")
-	@Email(message="Email inválido")	
+	@Email(message="Email inválido")
 	private String email;
-	
+
 	@NotEmpty(message="Preenchimento obrigatório")
-	private String documento;
-	
+	private String cpfOuCnpj;
+
 	private Integer tipo;
 	
 	@NotEmpty(message="Preenchimento obrigatório")
@@ -31,26 +31,27 @@ public class ClienteNewDTO implements Serializable {
 	
 	@NotEmpty(message="Preenchimento obrigatório")
 	private String logradouro;
-	
+
 	@NotEmpty(message="Preenchimento obrigatório")
 	private String numero;
-	
-	private String complemento;	
-	
+
+	private String complemento;
+
 	private String bairro;
-	
+
 	@NotEmpty(message="Preenchimento obrigatório")
 	private String cep;
 	
 	@NotEmpty(message="Preenchimento obrigatório")
 	private String telefone1;
+
 	private String telefone2;
-	private String telefone3;
 	
+	private String telefone3;
+
 	private Integer cidadeId;
 	
 	public ClienteNewDTO() {
-		
 	}
 
 	public String getNome() {
@@ -69,12 +70,12 @@ public class ClienteNewDTO implements Serializable {
 		this.email = email;
 	}
 
-	public String getDocumento() {
-		return documento;
+	public String getCpfOuCnpj() {
+		return cpfOuCnpj;
 	}
 
-	public void setDocumento(String documento) {
-		this.documento = documento;
+	public void setCpfOuCnpj(String cpfOuCnpj) {
+		this.cpfOuCnpj = cpfOuCnpj;
 	}
 
 	public Integer getTipo() {
@@ -156,14 +157,12 @@ public class ClienteNewDTO implements Serializable {
 	public void setCidadeId(Integer cidadeId) {
 		this.cidadeId = cidadeId;
 	}
-
+	
 	public String getSenha() {
 		return senha;
 	}
-
+	
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	
 }
