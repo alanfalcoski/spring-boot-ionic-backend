@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.alanfalcoski.cursomc.domain.enums.Perfil;
 
+import javassist.expr.NewArray;
+
 public class UserSS implements UserDetails {
 	private static final long serialVersionUID = 1L;
 	
@@ -29,6 +31,11 @@ public class UserSS implements UserDetails {
 		this.authorities = perfis.stream().map(x -> new SimpleGrantedAuthority(x.getDescricao())).collect(Collectors.toList());
 	}
 
+	/* Testa de um usuário possui um dado perfil */
+	public boolean hasRole(Perfil perfil) {
+		return getAuthorities().contains(new SimpleGrantedAuthority(perfil.getDescricao()));		
+	}
+	
 	public Integer getId() {
 		return id;
 	}
