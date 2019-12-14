@@ -36,7 +36,7 @@ public class AuthService {
 		
 		clienteRepository.save(cliente);
 		
-		emailService.sendNewPassowordEmail(cliente, newPass);
+		emailService.sendNewPasswordEmail(cliente, newPass);
 		
 	}
 

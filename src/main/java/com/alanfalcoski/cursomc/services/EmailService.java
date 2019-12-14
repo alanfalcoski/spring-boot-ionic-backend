@@ -17,5 +17,5 @@ public interface EmailService {
 	
 	void sendHtmlEmail(MimeMessage msg);
 	
-	void sendNewPassowordEmail(Cliente cliente, String newPass);
+	void sendNewPasswordEmail(Cliente cliente, String newPass);
 }
