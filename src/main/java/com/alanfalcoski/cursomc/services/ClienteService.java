@@ -29,7 +29,6 @@ import com.alanfalcoski.cursomc.security.UserSS;
 import com.alanfalcoski.cursomc.services.exceptions.AuthorizationException;
 import com.alanfalcoski.cursomc.services.exceptions.DataIntegrityException;
 import com.alanfalcoski.cursomc.services.exceptions.ObjectNotFoundException;
-import com.amazonaws.services.alexaforbusiness.model.Content;
 
 @Service
 public class ClienteService {
@@ -51,6 +50,11 @@ public class ClienteService {
 	
 	@Value("${img.prefix.client.profile}")
 	private String prefix;
+	
+	@Value("${img.profile.size}")
+	private Integer imgClientProfileSize;
+	
+	
 	
 	public Cliente find(Integer id) {
 		
@@ -129,7 +133,14 @@ public class ClienteService {
 		}
 		
 		BufferedImage jpgImage = imageService.getJpgImageFromFile(multipartFile);
+		
+		jpgImage = imageService.cropSquare(jpgImage);
+		jpgImage = imageService.resize(jpgImage, imgClientProfileSize);
+				
 		String fileName = prefix + user.getId() + ".jpg";
+		
+		
+		
 		
 		return s3Service.uploadFile(imageService.getInputStream(jpgImage, "jpg"), fileName, "image");		
 	}
